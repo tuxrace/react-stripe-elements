@@ -6,6 +6,7 @@
 declare type ElementShape = {
   mount: Function,
   destroy: () => ElementShape,
+  clear: () => void,
   on: (event: string, handler: Function) => ElementShape,
   update: (options: Object) => ElementShape,
 };
@@ -16,7 +17,12 @@ declare type ElementsShape = {
 
 declare type StripeShape = {
   elements: (options: Object) => ElementsShape,
-  createSource: (element: ElementShape | Object, options: ?Object) => Promise<{source?: Object, error?: Object}>,
-  createToken: (type: string | ElementShape, options: Object) => Promise<{token?: Object, error?: Object}>,
+  createSource: (
+    element: ElementShape | Object,
+    options: ?Object
+  ) => Promise<{source?: Object, error?: Object}>,
+  createToken: (
+    type: string | ElementShape,
+    options: Object
+  ) => Promise<{token?: Object, error?: Object}>,
 };
-
